@@ -320,28 +320,42 @@ nav button:hover {
     font-weight: 500;
 }
 
-.checkout-btn {
+/* Pie del carrito integrado al sidebar */
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+    background: #fdfcfb;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.checkout-btn-wa {
     width: 100%;
-    background: var(--color-whatsapp);
-    color: var(--color-white);
     padding: 1rem;
+    background: var(--color-whatsapp);
+    color: white;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-speed);
-    font-size: 1rem;
-    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 8px;
+    transition: var(--transition);
 }
 
-.checkout-btn:hover {
-    background: #22c55e;
+.checkout-btn-wa:hover {
+    filter: brightness(1.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
+
 
 /* ==========================================
     WHATSAPP FLOATING BUTTON
@@ -357,7 +371,7 @@ nav button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-white);
+    color: var(--color-whatsapp);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 30;
     transition: all var(--transition-speed);

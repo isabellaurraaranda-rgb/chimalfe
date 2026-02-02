@@ -18,35 +18,35 @@ const PRODUCTS = {
             id: 1,
             name: 'Huso de madera nativa - 53cm',
             price: 15000,
-            image: 'chimalfe/productos/huso.jpg',
+            image: 'productos/huso.jpg',
             category: 'wool'
         },
         {
             id: 2,
             name: 'Lana de Oveja doble hebra Color Natural - 100g',
             price: 3800,
-            image: 'chimalfe/productos/lanadobrehebracrudo.jpg',
+            image: 'productos/lanadobrehebracrudo.jpg',
             category: 'wool'
         },
         {
             id: 3,
             name: 'Lana de Oveja Teñido Natural Flor de Aromo - 178g',
             price: 6400,
-            image: 'chimalfe/productos/lanafloraromo.jpg',
+            image: 'productos/lanafloraromo.jpg',
             category: 'wool'
         },
         {
             id: 4,
             name: 'Lana de oveja hilado artesanal  - 500g',
             price: 22000,
-            image: 'chimalfe/productos/lanaartesanal.jpg',
+            image: 'productos/lanaartesanal.jpg',
             category: 'wool'
         },
         {
             id: 5,
             name: 'Lana de oveja pitio  - 500g',
             price: 25000,
-            image: 'chimalfe/productos/lanapitio.jpg',
+            image: 'productos/lanapitio.jpg',
             category: 'wool'
         }        
         ],
@@ -55,7 +55,7 @@ const PRODUCTS = {
             id: 6,
             name: 'Amukan Makuñ 150*206 cm',
             price: 420000,
-            image: 'chimalfe/productos/amukanmakun.jpg',
+            image: 'productos/amukanmakun.jpg',
             desc: "Manta tejida en telar mapuche wixal, técnica tejido llano o liso, motro o 4 orillos. Lana de oveja natural colores crudo, pitio y café",
             category: 'textiles'
         },
@@ -63,7 +63,7 @@ const PRODUCTS = {
             id: 7,
             name: 'Makuñ azul 150*206 cm',
             price: 390000,
-            image: 'chimalfe/productos/makunazul.jpg',
+            image: 'productos/makunazul.jpg',
             desc: "Manta tejida en telar mapuche wixal, técnica tejido llano o liso con flecos. Lana de oveja natural colores café, pitio, crudo, azul, celeste, y amarillo de flor de aromo",
             category: 'textiles'
         },
@@ -71,42 +71,42 @@ const PRODUCTS = {
             id: 8,
             name: 'Faja Tejida a Telar con ñimin de 216cm',
             price: 120000,
-            image: 'chimalfe/productos/fajanimin.jpg',
+            image: 'productos/fajanimin.jpg',
             category: 'textiles'
         },
         {
             id: 9,
             name: 'Faja Tejida a Telar color rojo de 265cm',
             price: 95000,
-            image: 'chimalfe/productos/fajanimin.jpg',
+            image: 'productos/fajanimin.jpg',
             category: 'textiles'
         },
         {
             id: 10,
             name: 'Bolso Artesanal',
             price: 35000,
-            image: 'chimalfe/productos/bolsoartesanal.jpg',
+            image: 'productos/bolsoartesanal.jpg',
             category: 'textiles'
         },
         {
             id: 11,
             name: 'Piecera 55*105 cm',
             price: 50000,
-            image: 'chimalfe/productos/piecera.jpg',
+            image: 'productos/piecera.jpg',
             category: 'textiles'
         },
         {
             id: 12,
             name: 'Cinturon rojo ',
             price: 35000,
-            image: 'chimalfe/productos/trarilonkorojo.jpg',
+            image: 'productos/trarilonkorojo.jpg',
             category: 'textiles'
         },
         {
             id: 13,
             name: 'Cinturon azul ',
             price: 35000,
-            image: 'chimalfe/productos/trarilonkoazul.jpg',
+            image: 'productos/trarilonkoazul.jpg',
             category: 'textiles'
         }        
     ],
@@ -115,7 +115,7 @@ const PRODUCTS = {
             id: 14,
             name: 'Clase virtual CHAÑUNTUKU Sobremontura',
             price: 30000,
-            image: 'chimalfe/productos/tallervirtualchanunruku.jpg',
+            image: 'productos/tallervirtualchanunruku.jpg',
             desc: '1 sesiones online - El chañuntuku o chañuntuko es un textil único, reconocido por sus flecos largos y coloridos que antiguamente acompañaban a los arrieros en la cordillera, destinado a la sobremontura del caballo. Hoy lo rescatamos como una expresión de identidad, arte y memoria.',
             category: 'classes'
         }
@@ -444,4 +444,5 @@ window.toggleCart = toggleCart;
 window.addToCart = addToCart;
 window.updateQuantity = updateQuantity;
 window.removeFromCart = removeFromCart;
+
 window.sendToWhatsApp = sendToWhatsApp;

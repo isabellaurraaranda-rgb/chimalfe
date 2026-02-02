@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chimalfe - Tejidos ancestrales mapuche hechos a mano, clases virtuales y lanas naturales">
+    <meta name="keywords" content="tejidos mapuche, artesanía indígena, lanas naturales, clases tejido">
+    <title>Chimalfe - Tejidos Ancestrales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <button class="logo" onclick="showSection('home')" aria-label="Ir a inicio">CHIMALFE</button>
+            
+            <nav>
+                <button onclick="showSection('wool')">Lanas</button>                
+                <button onclick="showSection('textiles')">Tejidos</button>
+                <button onclick="showSection('classes')">Clases</button>
+
+            </nav>
+
+            <div class="header-actions">
+                <button class="cart-btn" onclick="toggleCart()" aria-label="Abrir carrito">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 2L7 7H21L19 2H9Z"/>
+                        <path d="M7 7H21L19 21H9L7 7Z"/>
+                        <circle cx="10" cy="20" r="1"/>
+                        <circle cx="18" cy="20" r="1"/>
+                    </svg>
+                    <span class="cart-badge hidden" id="cartBadge">0</span>
+                </button>
+                
+                <button class="menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir menú">
+                    <svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button onclick="showSection('wool'); toggleMobileMenu();">Lanas</button>
+            <button onclick="showSection('textiles'); toggleMobileMenu();">Tejidos</button>
+            <button onclick="showSection('classes'); toggleMobileMenu();">Clases</button>
+
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Carrito</h2>
+            <button class="close-cart" onclick="toggleCart()" aria-label="Cerrar carrito">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">Tu carrito está vacío</p>
+        </div>
+
+        <div class="cart-footer hidden" id="cartFooter">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="checkout-btn" onclick="sendToWhatsApp()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Comprar por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/56944242756?text=Hola%2C%20tengo%20una%20consulta%20sobre%20sus%20productos" 
+        class="whatsapp-float" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <div id="homeSection">
+            <div class="home-hero">
+                <h1>Textiles Ancestrales</h1>
+                <p><p>Piezas únicas · Clases · Lanas naturales</p>
+
+                
+            <div class="home-categories">
+                <button class="category-card" onclick="showSection('wool')">
+                    <img src="lana.jpeg" alt="Lanas naturales">
+                    <div class="category-overlay">
+                        <h2>Lanas Naturales</h2>
+                    </div>
+                </button>
+
+                <button class="category-card" onclick="showSection('textiles')">
+                    <img src="MAKUN  (3).jpeg" alt="Tejidos artesanales mapuche">
+                    <div class="category-overlay">
+                        <h2>Tejidos Handmade</h2>
+                    </div>
+                </button>
+
+                <button class="category-card" onclick="showSection('classes')">
+                    <img src="taller virtual.jpg" alt="Clases de tejido mapuche">
+                    <div class="category-overlay">
+                        <h2>Clases Online</h2>
+                    </div>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Textiles Section -->
+
+        <!-- Wool Section -->
+        <div id="woolSection" class="hidden">
+            <h1 class="section-title">Venta de Lanas</h1>
+            <div class="products-grid" id="woolGrid"></div>
+        </div>
+        
+        <div id="textilesSection" class="hidden">
+            <h1 class="section-title">Tejidos de Pueblos Indígenas</h1>
+            <div class="products-grid" id="textilesGrid"></div>
+        </div>
+
+        <!-- Classes Section -->
+        <div id="classesSection" class="hidden">
+            <h1 class="section-title">Clases Virtuales de Tejido Mapuche</h1>
+            <div class="products-grid classes-grid" id="classesGrid"></div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-logo">CHIMALFE</p>
+            <p class="footer-domain">chimalfe.xyz</p>
+            <p class="footer-tagline"><p>Piezas únicas · Clases · Lanas naturales</p>
+            <div class="footer-contact">
+                <a href="https://wa.me/56944242756" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    +56 9 4424 2756
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

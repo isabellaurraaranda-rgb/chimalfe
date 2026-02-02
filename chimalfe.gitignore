@@ -1,0 +1,131 @@
+# ==========================================
+# .gitignore para Chimalfe
+# ==========================================
+
+# Sistema Operativo
+# ------------------------------------------
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Editores e IDEs
+# ------------------------------------------
+# Visual Studio Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (WebStorm, PhpStorm, etc.)
+.idea/
+.idea/*
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+\#*\#
+.\#*
+
+# Atom
+.atom/
+
+# Archivos Temporales
+# ------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.cache
+
+# Logs
+# ------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Dependencias (por si usas npm en el futuro)
+# ------------------------------------------
+node_modules/
+jspm_packages/
+bower_components/
+
+# Vercel
+# ------------------------------------------
+.vercel
+.vercel/*
+
+# Build y archivos compilados
+# ------------------------------------------
+dist/
+build/
+out/
+
+# Archivos de entorno (si usas variables)
+# ------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de prueba
+# ------------------------------------------
+coverage/
+.nyc_output/
+
+# Otros
+# ------------------------------------------
+# Archivos de respaldo
+*backup*
+*BACKUP*
+
+# Archivos personales
+notas.txt
+TODO.txt
+.personal/
+
+# Archivos grandes o media local (opcional)
+# assets/videos/
+# assets/temp/

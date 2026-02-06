@@ -13,7 +13,7 @@ const PRODUCTS = {
         { id: 5, name: 'Lana de oveja pitio - 500g', price: 25000, image: 'lanapitio.jpg' }
     ],
     textiles: [
-        { id: 6, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'makun.jpg' },
+        { id: 6, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'amukanmakun.jpg' },
         { id: 7, name: 'Makuñ azul 145*168cm', price: 390000, image: 'makunazul.jpg' },
         { id: 8, name: 'Faja Tejida con ñimin - 216cm Peso 497gr  ', price: 120000, image: 'fajanimin.jpg' },
         { id: 9, name: 'Faja Roja - largo 265cm ', price: 95000, image: 'fajaroja.jpg' },
@@ -163,4 +163,5 @@ window.toggleCart = toggleCart;
 window.removeFromCart = removeFromCart;
 window.sendToWhatsApp = sendToWhatsApp;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
+
 

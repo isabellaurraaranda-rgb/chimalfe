@@ -23,7 +23,10 @@ const PRODUCTS = {
         { id: 13, name: 'Cinturon de 180cm Técnica Pampa Azul', price: 35000, image: 'trarilonkoazul.jpg' }
     ],
     classes: [
-        { id: 14, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg' }
+        { id: 14, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg' },
+        { id: 15, name: 'Clase MAKUÑ', price: 120000, image: 'virtualmakun.jpg' },
+        { id: 16, name: 'Clase TALEGA Bolso Andino', price: 40000, image: 'talega.jpg' },
+        { id: 17, name: 'Taller virtual de Metodologías sociales para proyectos artísticos y culturales', price: 40000, image: 'msac.jpg' }
     ]
 };
 
@@ -160,3 +163,4 @@ window.toggleCart = toggleCart;
 window.removeFromCart = removeFromCart;
 window.sendToWhatsApp = sendToWhatsApp;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
+

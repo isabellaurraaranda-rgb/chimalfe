@@ -17,12 +17,12 @@ const PRODUCTS = {
     textiles: [
         { id: 8, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'amukanmakun.jpg' },
         { id: 9, name: 'Makuñ azul 145*168cm', price: 390000, image: 'makunazul.jpg' },
-        { id: 10, name: 'Faja Tejida con ñimin - 216cm Peso 497gr  ', price: 120000, image: 'fajanimin.jpg' },
+        { id: 10, name: 'Faja Tejida con ñimin - 216cm Peso 497gr  ', price: 120000, image: 'fajanimin.jpg', soldOut: false },
         { id: 11, name: 'Faja Roja - largo 265cm ', price: 95000, image: 'fajaroja.jpg' },
         { id: 12, name: 'Bolso Artesanal 26*30cm', price: 35000, image: 'bolsoartesanal.jpg' },
-        { id: 13, name: 'Piecera tejida a telar 55*105cm', price: 50000, image: 'piecera.jpg' },
+        { id: 13, name: 'Piecera tejida a telar 55*105cm', price: 50000, image: 'piecera.jpg', soldOut: false },
         { id: 14, name: 'Cinturon de 180cm Técnica Pampa Rojo', price: 35000, image: 'trarilonkorojo.jpg' },
-        { id: 15, name: 'Cinturon de 180cm Técnica Pampa Azul', price: 35000, image: 'trarilonkoazul.jpg' }
+        { id: 15, name: 'Cinturon de 180cm Técnica Pampa Azul', price: 35000, image: 'trarilonkoazul.jpg', soldOut: false }
     ],
     classes: [
         { id: 16, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg' },
@@ -165,6 +165,7 @@ window.toggleCart = toggleCart;
 window.removeFromCart = removeFromCart;
 window.sendToWhatsApp = sendToWhatsApp;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
+
 
 
 

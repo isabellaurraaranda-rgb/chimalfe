@@ -1,4 +1,4 @@
- // 1. CONFIGURACIÓN Y CATÁLOGO
+// 1. CONFIGURACIÓN Y CATÁLOGO
 const STORE_CONFIG = {
     whatsappNumber: '56944242756',
     storeName: 'Chimalfe'
@@ -6,29 +6,29 @@ const STORE_CONFIG = {
 
 const PRODUCTS = {
     wool: [
-        { id: 1, name: 'Huso de madera nativa - 53cm', price: 15000, image: 'huso.jpg' },
-        { id: 2, name: 'Lana de oveja teñido con hoja de maqui - 500g', price: 27700, image: 'hojademaqui.jpg' },
-        { id: 3, name: 'Lana de oveja teñido con maqui - 500g', price: 27700, image: 'maqui.jpg' },
-        { id: 4, name: 'Lana Oveja Natural - 100g', price: 3800, image: 'lanadobrehebracrudo.jpg' },
-        { id: 5, name: 'Lana Flor de Aromo - 178g', price: 6400, image: 'lanafloraromo.jpg' },
-        { id: 6, name: 'Lana hilado artesanal - 500g', price: 22000, image: 'lanaartesanal.jpg' },
-        { id: 7, name: 'Lana de oveja pitio - 500g', price: 25000, image: 'lanapitio.jpg' }
+        { id: 1, name: 'Huso de madera nativa - 53cm', price: 15000, image: 'huso.jpg', soldOut: false },
+        { id: 2, name: 'Lana de oveja teñido con hoja de maqui - 500g', price: 27700, image: 'hojademaqui.jpg', soldOut: false },
+        { id: 3, name: 'Lana de oveja teñido con maqui - 500g', price: 27700, image: 'maqui.jpg', soldOut: false },
+        { id: 4, name: 'Lana Oveja Natural - 100g', price: 3800, image: 'lanadobrehebracrudo.jpg', soldOut: false },
+        { id: 5, name: 'Lana Flor de Aromo - 178g', price: 6400, image: 'lanafloraromo.jpg', soldOut: false },
+        { id: 6, name: 'Lana hilado artesanal - 500g', price: 22000, image: 'lanaartesanal.jpg', soldOut: false },
+        { id: 7, name: 'Lana de oveja pitio - 500g', price: 25000, image: 'lanapitio.jpg', soldOut: false }
     ],
     textiles: [
-        { id: 8, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'amukanmakun.jpg' },
-        { id: 9, name: 'Makuñ azul 145*168cm', price: 390000, image: 'makunazul.jpg' },
-        { id: 10, name: 'Faja Tejida con ñimin - 216cm Peso 497gr  ', price: 120000, image: 'fajanimin.jpg', soldOut: false },
-        { id: 11, name: 'Faja Roja - largo 265cm ', price: 95000, image: 'fajaroja.jpg' },
-        { id: 12, name: 'Bolso Artesanal 26*30cm', price: 35000, image: 'bolsoartesanal.jpg' },
+        { id: 8, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'amukanmakun.jpg', soldOut: false },
+        { id: 9, name: 'Makuñ azul 145*168cm', price: 390000, image: 'makunazul.jpg', soldOut: false },
+        { id: 10, name: 'Faja Tejida con ñimin - 216cm Peso 497gr', price: 120000, image: 'fajanimin.jpg', soldOut: false },
+        { id: 11, name: 'Faja Roja - largo 265cm', price: 95000, image: 'fajaroja.jpg', soldOut: false },
+        { id: 12, name: 'Bolso Artesanal 26*30cm', price: 35000, image: 'bolsoartesanal.jpg', soldOut: false },
         { id: 13, name: 'Piecera tejida a telar 55*105cm', price: 50000, image: 'piecera.jpg', soldOut: false },
-        { id: 14, name: 'Cinturon de 180cm Técnica Pampa Rojo', price: 35000, image: 'trarilonkorojo.jpg' },
+        { id: 14, name: 'Cinturon de 180cm Técnica Pampa Rojo', price: 35000, image: 'trarilonkorojo.jpg', soldOut: false },
         { id: 15, name: 'Cinturon de 180cm Técnica Pampa Azul', price: 35000, image: 'trarilonkoazul.jpg', soldOut: false }
     ],
     classes: [
-        { id: 16, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg' },
-        { id: 17, name: 'Clase MAKUÑ', price: 120000, image: 'virtualmakun.jpg' },
-        { id: 18, name: 'Clase TALEGA Bolso Andino', price: 40000, image: 'talega.jpg' },
-        { id: 19, name: 'Taller virtual de Metodologías sociales para proyectos artísticos y culturales', price: 40000, image: 'msac.jpg' }
+        { id: 16, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg', soldOut: false },
+        { id: 17, name: 'Clase MAKUÑ', price: 120000, image: 'virtualmakun.jpg', soldOut: false },
+        { id: 18, name: 'Clase TALEGA Bolso Andino', price: 40000, image: 'talega.jpg', soldOut: false },
+        { id: 19, name: 'Taller virtual de Metodologías sociales para proyectos artísticos y culturales', price: 40000, image: 'msac.jpg', soldOut: false }
     ]
 };
 
@@ -41,12 +41,18 @@ function renderProducts() {
         const grid = document.getElementById(`${cat}Grid`);
         if (!grid) return;
         grid.innerHTML = PRODUCTS[cat].map(p => `
-            <div class="product-card">
-                <div class="product-image"><img src="${p.image}" alt="${p.name}"></div>
+            <div class="product-card ${p.soldOut ? 'sold-out' : ''}">
+                <div class="product-image">
+                    <img src="${p.image}" alt="${p.name}">
+                    ${p.soldOut ? '<div class="sold-out-badge">AGOTADO</div>' : ''}
+                </div>
                 <div class="product-info">
                     <h3>${p.name}</h3>
                     <p class="product-price">$${p.price.toLocaleString('es-CL')}</p>
-                    <button class="add-to-cart-btn" onclick="addToCart(${p.id})">Agregar</button>
+                    ${p.soldOut 
+                        ? '<button class="add-to-cart-btn disabled" disabled>Agotado</button>'
+                        : `<button class="add-to-cart-btn" onclick="addToCart(${p.id})">Agregar</button>`
+                    }
                 </div>
             </div>
         `).join('');
@@ -78,6 +84,13 @@ function toggleCart() {
 function addToCart(id) {
     const all = [...PRODUCTS.wool, ...PRODUCTS.textiles, ...PRODUCTS.classes];
     const product = all.find(p => p.id === id);
+    
+    // Verificar si el producto está agotado
+    if (product && product.soldOut) {
+        alert('Lo sentimos, este producto está agotado');
+        return;
+    }
+    
     if (product) {
         const existing = cart.find(item => item.id === id);
         if (existing) {
@@ -102,13 +115,13 @@ function updateCartUI() {
 
     if (container) {
         if (cart.length === 0) {
-            container.innerHTML = '<p style="padding:20px; text-align:center">Tu carrito está vacío</p>';
+            container.innerHTML = '<p style="padding:20px; text-align:center; color:#666">Tu carrito está vacío</p>';
         } else {
             container.innerHTML = cart.map((item, index) => `
                 <div class="cart-item" style="display:flex; justify-content:space-between; align-items:center; padding:10px; border-bottom:1px solid #eee">
                     <div>
                         <p style="margin:0; font-weight:bold; font-size:0.9rem">${item.name}</p>
-                        <p style="margin:0; font-size:0.8rem">${item.quantity} x $${item.price.toLocaleString('es-CL')}</p>
+                        <p style="margin:0; font-size:0.8rem; color:#666">${item.quantity} x $${item.price.toLocaleString('es-CL')}</p>
                     </div>
                     <button onclick="removeFromCart(${index})" style="background:none; border:none; color:red; font-size:1.2rem; cursor:pointer">✕</button>
                 </div>
@@ -165,7 +178,5 @@ window.toggleCart = toggleCart;
 window.removeFromCart = removeFromCart;
 window.sendToWhatsApp = sendToWhatsApp;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
-
-
 
 

@@ -6,7 +6,7 @@ const STORE_CONFIG = {
 
 const PRODUCTS = {
     wool: [
-        { id: 1, name: 'Vellón de lana de oveja 5 kilos', price: 40000, image: 'vellon.jpg', soldOut: false },
+        { id: 1, name: 'Vellón de lana de oveja 5 kilos', price: 50000, image: 'vellon.jpg', soldOut: false },
         { id: 2, name: 'Huso de madera nativa - 53cm', price: 15000, image: 'huso.jpg', soldOut: false },
         { id: 3, name: 'Lana TEÑIDO NATURAL DE HOJA DE MAQUI - 500g', price: 30000, image: 'hojademaqui.jpg', soldOut: false },
         { id: 4, name: 'Lana TEÑIDO NATURAL DE FRUTO DE MAQUI- 500g', price: 30000, image: 'maqui.jpg', soldOut: false },
@@ -181,6 +181,7 @@ window.toggleCart = toggleCart;
 window.removeFromCart = removeFromCart;
 window.sendToWhatsApp = sendToWhatsApp;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
+
 
 
 

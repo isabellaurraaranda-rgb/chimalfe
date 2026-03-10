@@ -10,28 +10,30 @@ const PRODUCTS = {
         { id: 2, name: 'Huso de madera nativa - 53cm', price: 15000, image: 'huso.jpg', soldOut: false },
         { id: 3, name: 'Lana TEÑIDO NATURAL DE HOJA DE MAQUI - 500g', price: 30000, image: 'hojademaqui.jpg', soldOut: false },
         { id: 4, name: 'Lana TEÑIDO NATURAL DE FRUTO DE MAQUI- 500g', price: 30000, image: 'maqui.jpg', soldOut: false },
-        { id: 5, name: 'Lana Oveja Natural - 100g', price: 3800, image: 'lanadobrehebracrudo.jpg', soldOut: false },
-        { id: 6, name: 'Lana TEÑIDO NATURAL DE FLOR DE AROMO - 178g', price: 6400, image: 'lanafloraromo.jpg', soldOut: false },
-        { id: 7, name: 'Lana hilado artesanal - 500g', price: 22000, image: 'lanaartesanal.jpg', soldOut: false },
-        { id: 8, name: 'Lana de oveja pitio - 500g', price: 25000, image: 'lanapitio.jpg', soldOut: false }
+        { id: 5, name: 'Lana TEÑIDO NATURAL DE HOJA DE RADAL - 500g', price: 30000, image: 'radal.jpg', soldOut: false },
+        { id: 6, name: 'Lana TEÑIDO NATURAL DE EUCALIPTO - 500g', price: 30000, image: 'eucalipto.jpg', soldOut: false },
+        { id: 7, name: 'Lana Oveja Natural - 100g', price: 3800, image: 'lanadobrehebracrudo.jpg', soldOut: false },
+        { id: 8, name: 'Lana TEÑIDO NATURAL DE FLOR DE AROMO - 178g', price: 6400, image: 'lanafloraromo.jpg', soldOut: false },
+        { id: 9, name: 'Lana hilado artesanal - 500g', price: 22000, image: 'lanaartesanal.jpg', soldOut: false },
+        { id: 10, name: 'Lana de oveja pitio - 500g', price: 25000, image: 'lanapitio.jpg', soldOut: false }
     ],
     textiles: [
-        { id: 9, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'amukanmakun.jpg', soldOut: false },
-        { id: 10, name: 'Makuñ azul 145*168cm', price: 390000, image: 'makunazul.jpg', soldOut: false },
-        { id: 11, name: 'Faja Roja - largo 265cm', price: 95000, image: 'fajaroja.jpg', soldOut: false },
-        { id: 12, name: 'Bolso Artesanal 26*30cm', price: 35000, image: 'bolsoartesanal.jpg', soldOut: false },
-        { id: 13, name: 'Cinturon de 180cm Técnica Pampa Rojo', price: 35000, image: 'trarilonkorojo.jpg', soldOut: false },
-        { id: 14, name: 'Chañuntuku 80 x 70 cm aprox. Sobemontrura ecuestre', price: 220000, image: 'chanuntuku.jpg', soldOut: false },
-        { id: 15, name: 'Faja Tejida con ñimin - 216cm Peso 497gr', price: 120000, image: 'fajanimin.jpg', soldOut: true },
-        { id: 16, name: 'Piecera tejida a telar 55*105cm', price: 50000, image: 'piecera.jpg', soldOut: true },
-        { id: 17, name: 'Cinturon de 180cm Técnica Pampa Azul', price: 35000, image: 'trarilonkoazul.jpg', soldOut: true },
+        { id: 11, name: 'Amukan Makuñ 150*206cm', price: 420000, image: 'amukanmakun.jpg', soldOut: false },
+        { id: 12, name: 'Makuñ azul 145*168cm', price: 390000, image: 'makunazul.jpg', soldOut: false },
+        { id: 13, name: 'Faja Roja - largo 265cm', price: 95000, image: 'fajaroja.jpg', soldOut: false },
+        { id: 14, name: 'Bolso Artesanal 26*30cm', price: 35000, image: 'bolsoartesanal.jpg', soldOut: false },
+        { id: 15, name: 'Cinturon de 180cm Técnica Pampa Rojo', price: 35000, image: 'trarilonkorojo.jpg', soldOut: false },
+        { id: 16, name: 'Chañuntuku 80 x 70 cm aprox. Sobemontrura ecuestre', price: 220000, image: 'chanuntuku.jpg', soldOut: false },
+        { id: 17, name: 'Faja Tejida con ñimin - 216cm Peso 497gr', price: 120000, image: 'fajanimin.jpg', soldOut: true },
+        { id: 18, name: 'Piecera tejida a telar 55*105cm', price: 50000, image: 'piecera.jpg', soldOut: true },
+        { id: 19, name: 'Cinturon de 180cm Técnica Pampa Azul', price: 35000, image: 'trarilonkoazul.jpg', soldOut: true },
         
     ],
     classes: [
-        { id: 18, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg', soldOut: false },
-        { id: 19, name: 'Clase MAKUÑ', price: 120000, image: 'virtualmakun.jpg', soldOut: false },
-        { id: 20, name: 'Clase TALEGA Bolso Andino', price: 40000, image: 'talega.jpg', soldOut: false },
-        { id: 21, name: 'Taller virtual de Metodologías sociales para proyectos artísticos y culturales', price: 40000, image: 'msac.jpg', soldOut: false }
+        { id: 20, name: 'Clase CHAÑUNTUKU', price: 30000, image: 'tallervirtualchanuntuku.jpg', soldOut: false },
+        { id: 21, name: 'Clase MAKUÑ', price: 120000, image: 'virtualmakun.jpg', soldOut: false },
+        { id: 22, name: 'Clase TALEGA Bolso Andino', price: 40000, image: 'talega.jpg', soldOut: false },
+        { id: 23, name: 'Taller virtual de Metodologías sociales para proyectos artísticos y culturales', price: 40000, image: 'msac.jpg', soldOut: false }
     ]
 };
 
@@ -181,6 +183,7 @@ window.toggleCart = toggleCart;
 window.removeFromCart = removeFromCart;
 window.sendToWhatsApp = sendToWhatsApp;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
+
 
 
 

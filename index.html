@@ -21,6 +21,7 @@
                 <button onclick="showSection('wool')">Lanas</button>
                 <button onclick="showSection('textiles')">Tejidos</button>
                 <button onclick="showSection('classes')">Clases</button>
+                <button onclick="showSection('nosotros')">Nosotros</button>
             </nav>
 
             <div class="header-actions">
@@ -46,6 +47,7 @@
             <button onclick="showSection('wool'); toggleMobileMenu();">Lanas</button>
             <button onclick="showSection('textiles'); toggleMobileMenu();">Tejidos</button>
             <button onclick="showSection('classes'); toggleMobileMenu();">Clases</button>
+            <button onclick="showSection('nosotros'); toggleMobileMenu();">Nosotros</button>
         </div>
     </header>
 
@@ -183,6 +185,222 @@
             </div>
             <div class="products-grid classes-grid" id="classesGrid"></div>
         </section>
+
+        <!-- ============================================================
+   SECCIÓN "NOSOTROS / CATÁLOGO" v3
+   Reemplaza TODO el contenido del <section id="nosotrosSection">
+   anterior, o pega antes de </main> si es la primera vez.
+   ============================================================ -->
+<section id="nosotrosSection" class="hidden">
+
+  <!-- Encabezado -->
+  <div class="cat-section-header">
+    <p class="section-eyebrow">Chimalfe · Región de Ñuble</p>
+    <h1 class="section-title">Catálogo <em style="font-style:italic;color:var(--color-earth-light)">de Lanas</em></h1>
+    <p class="section-desc">14 páginas · Producción artesanal · Tintes naturales del sur de Chile</p>
+  </div>
+
+  <!-- ── VISOR PRINCIPAL ── -->
+  <div class="cat-viewer">
+
+    <!-- Contador -->
+    <div class="cat-viewer-bar">
+      <span class="cat-page-label">Página <span id="catCurPage">1</span> de <span id="catTotalPages">14</span></span>
+      <span class="cat-page-title" id="catPageTitle">Portada</span>
+    </div>
+
+    <!-- Stage con slideshow -->
+    <div class="cat-stage" id="catStage">
+      <div class="cat-track" id="catTrack">
+
+        <!-- Página 1 — Portada logo -->
+        <div class="cat-slide">
+          <img src="catalog/CHIMALFE.png" alt="Chimalfe — Portada" loading="lazy">
+          <div class="cat-caption"><h3>Portada</h3><p>Chimalfe · Tejidos Ancestrales</p></div>
+        </div>
+
+        <!-- Página 2 — Acerca de -->
+        <div class="cat-slide">
+          <img src="catalog/2.png" alt="Acerca de Chimalfe" loading="lazy">
+          <div class="cat-caption"><h3>Acerca de Chimalfe</h3><p>Producción y valorización de lana natural · Cordillera de Ñuble</p></div>
+        </div>
+
+        <!-- Página 3 — Nuestros Productos -->
+        <div class="cat-slide">
+          <img src="catalog/3.png" alt="Nuestros Productos" loading="lazy">
+          <div class="cat-caption"><h3>Nuestros Productos</h3><p>Catálogo artesanal disponible según temporada y stock</p></div>
+        </div>
+
+        <!-- Página 4 — Hilanderas -->
+        <div class="cat-slide">
+          <img src="catalog/4.png" alt="Hilanderas Chelita y Francisca" loading="lazy">
+          <div class="cat-caption"><h3>Hilanderas</h3><p>Chelita &amp; Francisca · Capilla Central, Ñuble</p></div>
+        </div>
+
+        <!-- Página 5 — Teñido Hualle -->
+        <div class="cat-slide">
+          <img src="catalog/5.png" alt="Teñido Hoja de Hualle" loading="lazy">
+          <div class="cat-caption"><h3>Teñido · Hoja de Hualle</h3><p>Nothofagus obliqua · Tonos dorados y amarillos</p></div>
+        </div>
+
+        <!-- Página 6 — Teñido Maqui fruto -->
+        <div class="cat-slide">
+          <img src="catalog/6.png" alt="Teñido Fruto del Maqui" loading="lazy">
+          <div class="cat-caption"><h3>Teñido · Fruto del Maqui</h3><p>Aristotelia chilensis · Tonos morados y grises profundos</p></div>
+        </div>
+
+        <!-- Página 7 — Teñido Maqui hoja -->
+        <div class="cat-slide">
+          <img src="catalog/7.png" alt="Teñido Hoja de Maqui" loading="lazy">
+          <div class="cat-caption"><h3>Teñido · Hoja de Maqui</h3><p>Aristotelia chilensis · Tonos verdes y oliva</p></div>
+        </div>
+
+        <!-- Página 8 — Radal y Eucalipto -->
+        <div class="cat-slide">
+          <img src="catalog/8.png" alt="Teñido Radal y Eucalipto" loading="lazy">
+          <div class="cat-caption"><h3>Teñido · Radal &amp; Eucalipto</h3><p>Lomatia hirsuta / Eucalyptus globulus · Tonos café y amarillo</p></div>
+        </div>
+
+        <!-- Página 9 — Yerba Mate -->
+        <div class="cat-slide">
+          <img src="catalog/9.png" alt="Teñido Yerba Mate" loading="lazy">
+          <div class="cat-caption"><h3>Teñido · Yerba Mate</h3><p>Ilex paraguariensis · Tonos verde musgo</p></div>
+        </div>
+
+        <!-- Página 10 — Vellón -->
+        <div class="cat-slide">
+          <img src="catalog/10.png" alt="Vellón de lana natural" loading="lazy">
+          <div class="cat-caption"><h3>Vellón</h3><p>Crianza de ovinos en la cordillera de Ñuble</p></div>
+        </div>
+
+        <!-- Página 11 — Vellones teñidos -->
+        <div class="cat-slide">
+          <img src="catalog/11.png" alt="Vellones teñidos naturales" loading="lazy">
+          <div class="cat-caption"><h3>Vellones Teñidos</h3><p>Yerba Mate · Hoja de Hualle · Maqui · 100 gr</p></div>
+        </div>
+
+        <!-- Página 12 — Contacto -->
+        <div class="cat-slide">
+          <img src="catalog/12.png" alt="Contacto Chimalfe" loading="lazy">
+          <div class="cat-caption"><h3>Contáctanos</h3><p>chimalfetextil@gmail.com · @chimalfetextil · Región de Ñuble</p></div>
+        </div>
+
+        <!-- Página 13 — Territorio -->
+        <div class="cat-slide">
+          <img src="catalog/13.png" alt="Paisaje Cordillera de Ñuble" loading="lazy">
+          <div class="cat-caption"><h3>El Territorio</h3><p>Cordillera de Ñuble · Sur de Chile</p></div>
+        </div>
+
+        <!-- Página 14 — Portada catálogo lanas -->
+        <div class="cat-slide">
+          <img src="catalog/14.png" alt="Catálogo de Lanas Chimalfe" loading="lazy">
+          <div class="cat-caption"><h3>Catálogo de Lanas</h3><p>Lanas teñidas y naturales · Colores del paisaje</p></div>
+        </div>
+
+      </div><!-- /track -->
+
+      <!-- Botones de navegación sobre la imagen -->
+      <button class="cat-nav-btn cat-nav-prev" id="catPrevBtn" aria-label="Página anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="cat-nav-btn cat-nav-next" id="catNextBtn" aria-label="Página siguiente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div><!-- /stage -->
+
+    <!-- Puntos -->
+    <div class="cat-dots" id="catDots">
+      <button class="cat-dot active" aria-label="Página 1"></button>
+      <button class="cat-dot" aria-label="Página 2"></button>
+      <button class="cat-dot" aria-label="Página 3"></button>
+      <button class="cat-dot" aria-label="Página 4"></button>
+      <button class="cat-dot" aria-label="Página 5"></button>
+      <button class="cat-dot" aria-label="Página 6"></button>
+      <button class="cat-dot" aria-label="Página 7"></button>
+      <button class="cat-dot" aria-label="Página 8"></button>
+      <button class="cat-dot" aria-label="Página 9"></button>
+      <button class="cat-dot" aria-label="Página 10"></button>
+      <button class="cat-dot" aria-label="Página 11"></button>
+      <button class="cat-dot" aria-label="Página 12"></button>
+      <button class="cat-dot" aria-label="Página 13"></button>
+      <button class="cat-dot" aria-label="Página 14"></button>
+    </div>
+
+    <!-- Miniaturas -->
+    <div class="cat-thumbs" id="catThumbs">
+      <button class="cat-thumb active" data-index="0" aria-label="Página 1 — Portada">
+        <img src="catalog/CHIMALFE.png" alt="Portada" loading="lazy">
+        <span>Portada</span>
+      </button>
+      <button class="cat-thumb" data-index="1" aria-label="Página 2 — Acerca de">
+        <img src="catalog/2.png" alt="Acerca de" loading="lazy">
+        <span>Acerca de</span>
+      </button>
+      <button class="cat-thumb" data-index="2" aria-label="Página 3 — Productos">
+        <img src="catalog/3.png" alt="Productos" loading="lazy">
+        <span>Productos</span>
+      </button>
+      <button class="cat-thumb" data-index="3" aria-label="Página 4 — Hilanderas">
+        <img src="catalog/4.png" alt="Hilanderas" loading="lazy">
+        <span>Hilanderas</span>
+      </button>
+      <button class="cat-thumb" data-index="4" aria-label="Página 5 — Hualle">
+        <img src="catalog/5.png" alt="Hualle" loading="lazy">
+        <span>Hualle</span>
+      </button>
+      <button class="cat-thumb" data-index="5" aria-label="Página 6 — Maqui">
+        <img src="catalog/6.png" alt="Maqui fruto" loading="lazy">
+        <span>Maqui</span>
+      </button>
+      <button class="cat-thumb" data-index="6" aria-label="Página 7 — Maqui hoja">
+        <img src="catalog/7.png" alt="Maqui hoja" loading="lazy">
+        <span>Maqui hoja</span>
+      </button>
+      <button class="cat-thumb" data-index="7" aria-label="Página 8 — Radal">
+        <img src="catalog/8.png" alt="Radal" loading="lazy">
+        <span>Radal</span>
+      </button>
+      <button class="cat-thumb" data-index="8" aria-label="Página 9 — Yerba Mate">
+        <img src="catalog/9.png" alt="Yerba Mate" loading="lazy">
+        <span>Yerba Mate</span>
+      </button>
+      <button class="cat-thumb" data-index="9" aria-label="Página 10 — Vellón">
+        <img src="catalog/10.png" alt="Vellón" loading="lazy">
+        <span>Vellón</span>
+      </button>
+      <button class="cat-thumb" data-index="10" aria-label="Página 11 — Vellones">
+        <img src="catalog/11.png" alt="Vellones" loading="lazy">
+        <span>Vellones</span>
+      </button>
+      <button class="cat-thumb" data-index="11" aria-label="Página 12 — Contacto">
+        <img src="catalog/12.png" alt="Contacto" loading="lazy">
+        <span>Contacto</span>
+      </button>
+      <button class="cat-thumb" data-index="12" aria-label="Página 13 — Territorio">
+        <img src="catalog/13.png" alt="Territorio" loading="lazy">
+        <span>Territorio</span>
+      </button>
+      <button class="cat-thumb" data-index="13" aria-label="Página 14 — Catálogo">
+        <img src="catalog/14.png" alt="Catálogo" loading="lazy">
+        <span>Catálogo</span>
+      </button>
+    </div><!-- /thumbs -->
+
+    <!-- Botones prev/next de pie -->
+    <div class="cat-footer-nav">
+      <button class="cat-footer-btn" id="catFooterPrev" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Anterior
+      </button>
+      <button class="cat-footer-btn" id="catFooterNext">
+        Siguiente
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+  </div><!-- /cat-viewer -->
+
+</section>
     </main>
 
     <footer>

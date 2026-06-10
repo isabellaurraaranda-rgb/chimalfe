@@ -1085,3 +1085,259 @@ footer {
     .classes-grid { grid-template-columns: repeat(3, 1fr); }
     main { padding: 4rem 2rem; }
 }
+/* ============================================================
+   CATÁLOGO VISOR v3 — pegar al FINAL de styles.css
+   ============================================================ */
+
+/* ── Encabezado sección ── */
+.cat-section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Visor contenedor ── */
+.cat-viewer {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ── Barra superior: página + título ── */
+.cat-viewer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+.cat-page-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-lighter);
+    font-family: var(--font-body);
+}
+.cat-page-title {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-earth-light);
+}
+
+/* ── Stage (imagen principal) ── */
+.cat-stage {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    aspect-ratio: 16 / 9;
+    user-select: none;
+}
+.cat-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+.cat-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-cream);
+}
+.cat-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+.cat-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.9rem 1.4rem;
+    background: linear-gradient(to top, rgba(44,36,24,0.82) 0%, transparent 100%);
+    pointer-events: none;
+}
+.cat-caption h3 {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 2vw, 1.15rem);
+    color: var(--color-white);
+    font-weight: 400;
+    margin-bottom: 0.15rem;
+    line-height: 1.3;
+}
+.cat-caption p {
+    font-size: clamp(0.62rem, 1.3vw, 0.75rem);
+    color: rgba(255,255,255,0.65);
+    font-family: var(--font-body);
+    line-height: 1.4;
+}
+
+/* ── Botones sobre imagen ── */
+.cat-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-earth);
+    transition: all var(--transition);
+    z-index: 2;
+    box-shadow: var(--shadow-sm);
+}
+.cat-nav-btn:hover {
+    background: var(--color-white);
+    transform: translateY(-50%) scale(1.08);
+}
+.cat-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+.cat-nav-btn:disabled:hover { transform: translateY(-50%); }
+.cat-nav-prev { left: 0.65rem; }
+.cat-nav-next { right: 0.65rem; }
+
+/* ── Puntos de paginación ── */
+.cat-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0.85rem 0 0;
+}
+.cat-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+.cat-dot.active {
+    background: var(--color-earth);
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* ── Miniaturas ── */
+.cat-thumbs {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+}
+@media (max-width: 600px) {
+    .cat-thumbs {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 380px) {
+    .cat-thumbs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.cat-thumb {
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    background: var(--color-cream);
+    padding: 0;
+    position: relative;
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.cat-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    flex: 1;
+    min-height: 0;
+}
+.cat-thumb span {
+    display: block;
+    font-size: 0.55rem;
+    text-align: center;
+    padding: 2px 2px 3px;
+    color: var(--color-text-lighter);
+    background: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    font-family: var(--font-body);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cat-thumb:hover {
+    border-color: var(--color-earth-light);
+}
+.cat-thumb.active {
+    border-color: var(--color-earth);
+}
+.cat-thumb.active span {
+    color: var(--color-earth);
+    font-weight: 500;
+}
+
+/* ── Navegación de pie ── */
+.cat-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+}
+.cat-footer-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-earth-mid);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.cat-footer-btn:hover:not(:disabled) {
+    background: var(--color-earth);
+    color: var(--color-white);
+    border-color: var(--color-earth);
+}
+.cat-footer-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}

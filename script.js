@@ -322,7 +322,7 @@ document.addEventListener('keydown', e => {
 // 6. NAVEGACIÓN
 // ==========================================
 function showSection(sectionId) {
-    const sections = ['homeSection', 'woolSection', 'textilesSection', 'classesSection'];
+    const sections = ['homeSection', 'woolSection', 'textilesSection', 'classesSection', 'nosotrosSection'];
     sections.forEach(s => {
         const el = document.getElementById(s);
         if (el) el.classList.add('hidden');
@@ -452,6 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     showSection('home');
     updateCartUI();
+    initCatalogo()
 });
 
 // ==========================================
@@ -467,3 +468,69 @@ window.openModal = openModal;
 window.closeModal = closeModal;
 window.switchModalImage = switchModalImage;
 window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
+// ============================================================
+// CATÁLOGO VISOR v3 — pegar al FINAL de script.js
+// ============================================================
+
+function initCatalogo() {
+    const TOTAL = 14;
+    let cur = 0;
+
+    const track      = document.getElementById('catTrack');
+    const dots       = [...document.querySelectorAll('.cat-dot')];
+    const thumbs     = [...document.querySelectorAll('.cat-thumb')];
+    const curPageEl  = document.getElementById('catCurPage');
+    const titleEl    = document.getElementById('catPageTitle');
+    const prevBtn    = document.getElementById('catPrevBtn');
+    const nextBtn    = document.getElementById('catNextBtn');
+    const footerPrev = document.getElementById('catFooterPrev');
+    const footerNext = document.getElementById('catFooterNext');
+
+    if (!track) return;
+
+    const PAGE_TITLES = [
+        'Portada', 'Acerca de', 'Nuestros Productos', 'Hilanderas',
+        'Teñido Hualle', 'Teñido Maqui (fruto)', 'Teñido Maqui (hoja)',
+        'Teñido Radal & Eucalipto', 'Teñido Yerba Mate',
+        'Vellón', 'Vellones Teñidos', 'Contáctanos',
+        'El Territorio', 'Catálogo de Lanas'
+    ];
+
+    function goTo(n) {
+        cur = Math.max(0, Math.min(n, TOTAL - 1));
+        track.style.transform = `translateX(-${cur * 100}%)`;
+        dots.forEach((d, i)  => d.classList.toggle('active', i === cur));
+        thumbs.forEach((t, i) => t.classList.toggle('active', i === cur));
+        if (curPageEl) curPageEl.textContent = cur + 1;
+        if (titleEl)   titleEl.textContent   = PAGE_TITLES[cur];
+        if (prevBtn)    prevBtn.disabled    = cur === 0;
+        if (nextBtn)    nextBtn.disabled    = cur === TOTAL - 1;
+        if (footerPrev) footerPrev.disabled = cur === 0;
+        if (footerNext) footerNext.disabled = cur === TOTAL - 1;
+        thumbs[cur]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    prevBtn?.addEventListener('click',    () => goTo(cur - 1));
+    nextBtn?.addEventListener('click',    () => goTo(cur + 1));
+    footerPrev?.addEventListener('click', () => goTo(cur - 1));
+    footerNext?.addEventListener('click', () => goTo(cur + 1));
+    dots.forEach((d, i)   => d.addEventListener('click', () => goTo(i)));
+    thumbs.forEach((t, i) => t.addEventListener('click', () => goTo(i)));
+
+    // Swipe táctil
+    let touchStartX = 0;
+    const stage = document.getElementById('catStage');
+    stage?.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    stage?.addEventListener('touchend',   e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+    });
+
+    // Teclado (solo cuando la sección está visible)
+    document.addEventListener('keydown', e => {
+        if (document.getElementById('nosotrosSection')?.classList.contains('hidden')) return;
+        if (e.key === 'ArrowLeft')  goTo(cur - 1);
+        if (e.key === 'ArrowRight') goTo(cur + 1);
+    });
+}
+// ============================================================

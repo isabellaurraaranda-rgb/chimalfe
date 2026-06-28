@@ -122,7 +122,7 @@ const PRODUCTS = {
                 'Textura': 'suave y resistente',
                 'Origen': 'Sur de Chile'
             }
-        }   
+        }
     ],
     textiles: [
         {
@@ -187,8 +187,9 @@ const PRODUCTS = {
                 'Técnica': 'Ñe luam',
                 'Color': 'azul, cafe y natural',
                 'Nombre mapuche': 'ñe luam'
-            },
-             {
+            }
+        },
+        {
             id: 12,
             name: 'Kutama o alforja Teñida con maqui',
             shortDesc: 'Kutama teñida con el fruto de maqui',
@@ -202,7 +203,7 @@ const PRODUCTS = {
                 'Técnica': 'Ñe luam',
                 'Color': 'maqui, verde y natural',
                 'Nombre mapuche': 'Kutama'
-            } 
+            }
         }
     ],
     classes: [
@@ -220,8 +221,9 @@ const PRODUCTS = {
                 'Duración': '8 horas',
                 'Nivel': 'Medio-Avanzado',
                 'Incluye': 'Material digital, clases paso a paso, Bibliografia y acompañamiento personalizado'
-            },
-             {
+            }
+        },
+        {
             id: 14,
             name: 'Clase Virtual Ñimin',
             shortDesc: 'Aprende sobre la simbologia e iconografia de los dibujos del pueblo mapuche',
@@ -235,8 +237,9 @@ const PRODUCTS = {
                 'Duración': '3 horas',
                 'Nivel': 'Principiante',
                 'Incluye': 'Material digital, clases paso a paso, Bibliografia y acompañamiento personalizado'
-            },
-            {
+            }
+        },
+        {
             id: 15,
             name: 'Clase Virtual CHAÑUNTUKU',
             shortDesc: 'Aprende el tejido de fleco o mecha mapuche',
@@ -267,11 +270,19 @@ function renderProducts() {
     const sections = ['wool', 'textiles', 'classes'];
     sections.forEach(cat => {
         const grid = document.getElementById(`${cat}Grid`);
-        if (!grid) return;
-        grid.innerHTML = PRODUCTS[cat].map(p => `
+        if (!grid) {
+            console.warn(`No se encontró el contenedor #${cat}Grid`);
+            return;
+        }
+        const products = PRODUCTS[cat];
+        if (!products || !Array.isArray(products) || products.length === 0) {
+            grid.innerHTML = '<p class="empty-message">No hay productos disponibles en esta categoría.</p>';
+            return;
+        }
+        grid.innerHTML = products.map(p => `
             <div class="product-card" onclick="openModal(${p.id})">
                 <div class="product-image">
-                    <img src="${p.image}" alt="${p.name}" loading="lazy">
+                    <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='placeholder.jpg'">
                     <div class="product-image-overlay">
                         <span class="product-view-btn">Ver detalles</span>
                     </div>
@@ -300,61 +311,98 @@ function renderProducts() {
 function openModal(id) {
     const all = [...PRODUCTS.wool, ...PRODUCTS.textiles, ...PRODUCTS.classes];
     const product = all.find(p => p.id === id);
-    if (!product) return;
-
-    document.getElementById('modalCategory').textContent = product.category;
-    document.getElementById('modalTitle').textContent = product.name;
-    document.getElementById('modalPrice').textContent = `$${product.price.toLocaleString('es-CL')}`;
-    document.getElementById('modalDescription').textContent = product.description;
-    document.getElementById('modalImage').src = product.image;
-    document.getElementById('modalImage').alt = product.name;
-
-    // Thumbnails
-    const thumbsEl = document.getElementById('modalThumbnails');
-    if (product.images && product.images.length > 1) {
-        thumbsEl.innerHTML = product.images.map((img, i) => `
-            <img class="modal-thumb ${i === 0 ? 'active' : ''}" src="${img}" alt="${product.name}" onclick="switchModalImage(this, '${img}')">
-        `).join('');
-        thumbsEl.style.display = 'flex';
-    } else {
-        thumbsEl.style.display = 'none';
+    if (!product) {
+        console.warn('Producto no encontrado con ID:', id);
+        return;
     }
 
-    // Details
-    const detailsEl = document.getElementById('modalDetails');
-    if (product.details) {
-        detailsEl.innerHTML = Object.entries(product.details).map(([k, v]) => `
-            <div class="modal-detail-item">
-                <span class="modal-detail-label">${k}</span>
-                <span class="modal-detail-value">${v}</span>
-            </div>
-        `).join('');
+    // Elementos del modal
+    const modalOverlay = document.getElementById('modalOverlay');
+    const productModal = document.getElementById('productModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDetails = document.getElementById('modalDetails');
+    const modalThumbnails = document.getElementById('modalThumbnails');
+    const modalAddBtn = document.getElementById('modalAddBtn');
+    const modalConsultLink = document.getElementById('modalConsultLink');
+
+    if (!modalOverlay || !productModal) {
+        console.error('Elementos del modal no encontrados en el DOM');
+        return;
+    }
+
+    // Rellenar datos
+    if (modalCategory) modalCategory.textContent = product.category || '';
+    if (modalTitle) modalTitle.textContent = product.name;
+    if (modalPrice) modalPrice.textContent = `$${product.price.toLocaleString('es-CL')}`;
+    if (modalDescription) modalDescription.textContent = product.description || '';
+    if (modalImage) {
+        modalImage.src = product.image || 'placeholder.jpg';
+        modalImage.alt = product.name;
+    }
+
+    // Miniaturas
+    if (modalThumbnails) {
+        if (product.images && product.images.length > 1) {
+            modalThumbnails.innerHTML = product.images.map((img, i) => `
+                <img class="modal-thumb ${i === 0 ? 'active' : ''}" src="${img}" alt="${product.name}" onclick="switchModalImage(this, '${img}')">
+            `).join('');
+            modalThumbnails.style.display = 'flex';
+        } else {
+            modalThumbnails.innerHTML = '';
+            modalThumbnails.style.display = 'none';
+        }
+    }
+
+    // Detalles
+    if (modalDetails) {
+        if (product.details && Object.keys(product.details).length > 0) {
+            modalDetails.innerHTML = Object.entries(product.details).map(([k, v]) => `
+                <div class="modal-detail-item">
+                    <span class="modal-detail-label">${k}</span>
+                    <span class="modal-detail-value">${v}</span>
+                </div>
+            `).join('');
+        } else {
+            modalDetails.innerHTML = '';
+        }
     }
 
     // Botón agregar
-    document.getElementById('modalAddBtn').onclick = () => {
-        addToCart(id);
-        closeModal();
-    };
+    if (modalAddBtn) {
+        modalAddBtn.onclick = () => {
+            addToCart(id);
+            closeModal();
+        };
+    }
 
     // Link consulta WhatsApp
-    const msg = encodeURIComponent(`Hola, me interesa este producto:\n*${product.name}*\n$${product.price.toLocaleString('es-CL')}\n¿Está disponible?`);
-    document.getElementById('modalConsultLink').href = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${msg}`;
+    if (modalConsultLink) {
+        const msg = encodeURIComponent(`Hola, me interesa este producto:\n*${product.name}*\n$${product.price.toLocaleString('es-CL')}\n¿Está disponible?`);
+        modalConsultLink.href = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${msg}`;
+    }
 
-    document.getElementById('modalOverlay').classList.add('active');
-    document.getElementById('productModal').classList.add('active');
+    // Mostrar modal
+    modalOverlay.classList.add('active');
+    productModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function switchModalImage(thumb, src) {
-    document.getElementById('modalImage').src = src;
+    const mainImage = document.getElementById('modalImage');
+    if (mainImage) mainImage.src = src;
     document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
+    if (thumb) thumb.classList.add('active');
 }
 
 function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.getElementById('productModal').classList.remove('active');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const productModal = document.getElementById('productModal');
+    if (modalOverlay) modalOverlay.classList.remove('active');
+    if (productModal) productModal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
@@ -367,14 +415,29 @@ document.addEventListener('keydown', e => {
 // 6. NAVEGACIÓN
 // ==========================================
 function showSection(sectionId) {
-    const sections = ['homeSection', 'woolSection', 'textilesSection', 'classesSection', 'nosotrosSection'];
-    sections.forEach(s => {
-        const el = document.getElementById(s);
-        if (el) el.classList.add('hidden');
+    const sectionMap = {
+        home: 'homeSection',
+        wool: 'woolSection',
+        textiles: 'textilesSection',
+        classes: 'classesSection',
+        nosotros: 'nosotrosSection'
+    };
+    const targetId = sectionMap[sectionId];
+    if (!targetId) return;
+
+    // Ocultar todas las secciones principales
+    document.querySelectorAll('main > section').forEach(s => {
+        s.classList.add('hidden');
     });
-    const target = document.getElementById(`${sectionId}Section`);
-    if (target) target.classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Mostrar la sección objetivo
+    const target = document.getElementById(targetId);
+    if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        console.warn(`Sección no encontrada: ${targetId}`);
+    }
 }
 
 // ==========================================
@@ -383,8 +446,9 @@ function showSection(sectionId) {
 function toggleCart() {
     const sidebar = document.getElementById('cartSidebar');
     const overlay = document.getElementById('cartOverlay');
-    const isActive = sidebar.classList.contains('active');
+    if (!sidebar || !overlay) return;
 
+    const isActive = sidebar.classList.contains('active');
     if (isActive) {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
@@ -399,27 +463,35 @@ function toggleCart() {
 function addToCart(id) {
     const all = [...PRODUCTS.wool, ...PRODUCTS.textiles, ...PRODUCTS.classes];
     const product = all.find(p => p.id === id);
-    if (!product) return;
+    if (!product) {
+        console.warn('Producto no encontrado para agregar al carrito:', id);
+        return;
+    }
 
     const existing = cart.find(item => item.id === id);
     if (existing) {
-        existing.quantity++;
+        existing.quantity += 1;
     } else {
         cart.push({ ...product, quantity: 1 });
     }
     updateCartUI();
-    toggleCart();
+    toggleCart(); // Abre el carrito al agregar
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCartUI();
+    if (index >= 0 && index < cart.length) {
+        cart.splice(index, 1);
+        updateCartUI();
+    }
 }
 
 function changeQty(index, delta) {
-    cart[index].quantity += delta;
-    if (cart[index].quantity <= 0) {
+    if (index < 0 || index >= cart.length) return;
+    const newQty = cart[index].quantity + delta;
+    if (newQty <= 0) {
         cart.splice(index, 1);
+    } else {
+        cart[index].quantity = newQty;
     }
     updateCartUI();
 }
@@ -429,30 +501,30 @@ function updateCartUI() {
     const totalEl = document.getElementById('cartTotal');
     const badge = document.getElementById('cartBadge');
 
-    if (container) {
-        if (cart.length === 0) {
-            container.innerHTML = '<p class="cart-empty">Tu carrito está vacío</p>';
-        } else {
-            container.innerHTML = cart.map((item, index) => `
-                <div class="cart-item">
-                    <img class="cart-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">
-                    <div class="cart-item-body">
-                        <p class="cart-item-name">${item.name}</p>
-                        <p class="cart-item-price">$${item.price.toLocaleString('es-CL')}</p>
-                        <div class="cart-item-controls">
-                            <button class="qty-btn" onclick="changeQty(${index}, -1)">−</button>
-                            <span class="cart-item-qty">${item.quantity}</span>
-                            <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
-                        </div>
+    if (!container) return;
+
+    if (cart.length === 0) {
+        container.innerHTML = '<p class="cart-empty">Tu carrito está vacío</p>';
+    } else {
+        container.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <img class="cart-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">
+                <div class="cart-item-body">
+                    <p class="cart-item-name">${item.name}</p>
+                    <p class="cart-item-price">$${item.price.toLocaleString('es-CL')}</p>
+                    <div class="cart-item-controls">
+                        <button class="qty-btn" onclick="changeQty(${index}, -1)">−</button>
+                        <span class="cart-item-qty">${item.quantity}</span>
+                        <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
                     </div>
-                    <button class="remove-btn" onclick="removeFromCart(${index})" title="Eliminar">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                    </button>
                 </div>
-            `).join('');
-        }
+                <button class="remove-btn" onclick="removeFromCart(${index})" title="Eliminar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        `).join('');
     }
 
     const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
@@ -491,17 +563,41 @@ function sendToWhatsApp() {
 }
 
 // ==========================================
-// 9. INICIALIZACIÓN
+// 9. MENÚ MÓVIL
+// ==========================================
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
+// ==========================================
+// 10. INICIALIZACIÓN
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Verificar que los elementos críticos existen
+    const requiredElements = ['woolGrid', 'textilesGrid', 'classesGrid'];
+    requiredElements.forEach(id => {
+        if (!document.getElementById(id)) {
+            console.warn(`Elemento #${id} no encontrado en el DOM.`);
+        }
+    });
+
     renderProducts();
     showSection('home');
     updateCartUI();
-    initCatalogo()
+
+    // Inicializar catálogo si existe
+    if (typeof initCatalogo === 'function') {
+        initCatalogo();
+    } else {
+        console.warn('initCatalogo no está definido. Asegúrate de incluir el código del catálogo.');
+    }
 });
 
 // ==========================================
-// 10. EXPOSICIÓN GLOBAL
+// 11. EXPOSICIÓN GLOBAL
 // ==========================================
 window.showSection = showSection;
 window.addToCart = addToCart;
@@ -512,11 +608,11 @@ window.sendToWhatsApp = sendToWhatsApp;
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.switchModalImage = switchModalImage;
-window.toggleMobileMenu = () => document.getElementById('mobileMenu').classList.toggle('active');
-// ============================================================
-// CATÁLOGO VISOR v3 — pegar al FINAL de script.js
-// ============================================================
+window.toggleMobileMenu = toggleMobileMenu;
 
+// ============================================================
+// CATÁLOGO VISOR v3 — pegar al FINAL (se mantiene igual)
+// ============================================================
 function initCatalogo() {
     const TOTAL = 14;
     let cur = 0;
@@ -531,7 +627,10 @@ function initCatalogo() {
     const footerPrev = document.getElementById('catFooterPrev');
     const footerNext = document.getElementById('catFooterNext');
 
-    if (!track) return;
+    if (!track) {
+        console.warn('Catálogo: no se encontró #catTrack');
+        return;
+    }
 
     const PAGE_TITLES = [
         'Portada', 'Acerca de', 'Nuestros Productos', 'Hilanderas',
@@ -552,7 +651,7 @@ function initCatalogo() {
         if (nextBtn)    nextBtn.disabled    = cur === TOTAL - 1;
         if (footerPrev) footerPrev.disabled = cur === 0;
         if (footerNext) footerNext.disabled = cur === TOTAL - 1;
-        thumbs[cur]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        if (thumbs[cur]) thumbs[cur].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
 
     prevBtn?.addEventListener('click',    () => goTo(cur - 1));
@@ -577,5 +676,7 @@ function initCatalogo() {
         if (e.key === 'ArrowLeft')  goTo(cur - 1);
         if (e.key === 'ArrowRight') goTo(cur + 1);
     });
+
+    // Iniciar en la primera página
+    goTo(0);
 }
-// ============================================================

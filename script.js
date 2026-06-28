@@ -130,8 +130,8 @@ const PRODUCTS = {
             name: 'Amukan Makuñ',
             shortDesc: 'Manta tradicional mapuche',
             price: 420000,
-            image: 'makun.jpg',
-            images: ['makun.jpg'],
+            image: 'amukanmakun.jpg',
+            images: ['amukanmakun.jpg'],
             category: 'Tejidos',
             description: 'Makuñ tejido en telar vertical mapuche con técnica ancestral. El Amukan es un tejido de gran formato elaborado con lana de oveja hilada artesanalmente y teñida con plantas nativas. Cada pieza requiere semanas de trabajo y es una obra única e irrepetible.',
             details: {
@@ -165,7 +165,7 @@ const PRODUCTS = {
             image: 'chanuntuku.jpg',
             images: ['chanuntuku.jpg'],
             category: 'Tejidos',
-            description: 'Soremontura telar manual con lana de oveja natural. Pieza ideal para decorar el pie de la cama aportando calidez y la estética de los tejidos ancestrales mapuche. Se puede usar también como tapiz o alfombra pequeña.',
+            description: 'Soremontura de lana de oveja natural. Pieza ideal para decorar el pie de la cama aportando calidez y la estética de los tejidos ancestrales mapuche. Se puede usar también como tapiz o alfombra pequeña.',
             details: {
                 'Dimensiones': '80 × 70 cm',
                 'Material': 'Lana de oveja',
@@ -175,36 +175,81 @@ const PRODUCTS = {
         },
         {
             id: 11,
-            name: 'Cinturón Técnica Pampa Rojo',
-            shortDesc: 'Tramado con diseño pampa',
-            price: 45000,
-            image: 'trarilonkorojo.jpg',
-            images: ['trarilonkorojo.jpg'],
+            name: 'Pelero ojo de guanaco',
+            shortDesc: 'Pelero de ñe luam u ojo de guanaco',
+            price: 75000,
+            image: 'peleroojo.jpg',
+            images: ['peleroojo.jpg'],
             category: 'Tejidos',
-            description: 'Trarilonko o cinturón tejido con la técnica pampa, caracterizada por su tramado denso y patrones geométricos. Elaborado en lana teñida en tono rojo. El trarilonko tiene uso tanto decorativo como ceremonial en la cultura mapuche.',
+            description: 'Este pelero mapuche, conocido como Ojo de Guanaco, es mucho más que un tejido; es una pieza de arte textil cargada de simbolismo y tradición ancestral. El diseño geométrico que le da nombre evoca la mirada profunda y vigilante del guanaco, un animal sagrado para el pueblo mapuche que representa la conexión con la naturaleza y la libertad de la Patagonia. Elaborado bajo la técnica ancestral del Ñe luam (tejido en urdimbre), cada pieza es única y requiere de un meticuloso trabajo que ha sido transmitido por generaciones. La combinación de colores azul, café y el tono natural de la lana crea un contraste armónico y cálido, perfecto para realzar cualquier espacio o atuendo.',
             details: {
-                'Largo': '180 cm',
-                'Técnica': 'Pampa mapuche',
-                'Color': 'Rojo natural',
-                'Nombre mapuche': 'Trarilonko'
-            }
+                'Largo': '96 cm * 66 cm',
+                'Técnica': 'Ñe luam',
+                'Color': 'azul, cafe y natural',
+                'Nombre mapuche': 'ñe luam'
+            },
+             {
+            id: 12,
+            name: 'Kutama o alforja Teñida con maqui',
+            shortDesc: 'Kutama teñida con el fruto de maqui',
+            price: 90000,
+            image: 'kutamamaqui.jpg',
+            images: ['kutamamaqui.jpg'],
+            category: 'Tejidos',
+            description: 'Este Kutama (alforja) es mucho más que un accesorio; es una pieza viva de la cultura mapuche. Teñido artesanalmente con el fruto del maqui, un árbol nativo de nuestros bosques, sus fibras absorben los pigmentos púrpuras y azulados que solo la naturaleza sabe regalar.',
+            details: {
+                'Largo': '100 cm * 31 cm',
+                'Técnica': 'Ñe luam',
+                'Color': 'maqui, verde y natural',
+                'Nombre mapuche': 'Kutama'
+            } 
         }
     ],
     classes: [
         {
-            id: 12,
+            id: 13,
+            name: 'Clase Virtual Makuñ',
+            shortDesc: 'Aprende el tejido de manta mapuche',
+            price: 120000,
+            image: 'virtualmakun.jpg',
+            images: ['virtualmakun.jpg'],
+            category: 'Clases Virtuales',
+            description: 'Te invito a aprender el proceso completo de creación de un makuñ, desde la urdimbre hasta el tejido final. Son 4 clases de 2 horas cada una, pensadas para quienes quieren profundizar en el textil mapuche, respetando sus tiempos, técnicas y sentido.',
+            details: {
+                'Modalidad': 'Virtual (grabada)',
+                'Duración': '8 horas',
+                'Nivel': 'Medio-Avanzado',
+                'Incluye': 'Material digital, clases paso a paso, Bibliografia y acompañamiento personalizado'
+            },
+             {
+            id: 14,
+            name: 'Clase Virtual Ñimin',
+            shortDesc: 'Aprende sobre la simbologia e iconografia de los dibujos del pueblo mapuche',
+            price: 4000,
+            image: 'tallervirtualnimin.jpg',
+            images: ['tallervirtualnimin.jpg'],
+            category: 'Clases Virtuales',
+            description: 'El ñimin son las historias que habitan en los tejidos. En esta clase virtual aprenderás a crear tus propios dibujos para el telar o witral, comprendiendo la lógica y la estructura del patrón para que puedas diseñar con libertad. Aprenderas a : Diseñar tus propios ñimin; Comprender la estructura del patrón; Usar el diagrama para aplicarlo en el telar.',
+            details: {
+                'Modalidad': 'Virtual (grabada)',
+                'Duración': '3 horas',
+                'Nivel': 'Principiante',
+                'Incluye': 'Material digital, clases paso a paso, Bibliografia y acompañamiento personalizado'
+            },
+            {
+            id: 15,
             name: 'Clase Virtual CHAÑUNTUKU',
-            shortDesc: 'Aprende el tejido anudado mapuche',
+            shortDesc: 'Aprende el tejido de fleco o mecha mapuche',
             price: 30000,
             image: 'tallervirtual.jpg',
             images: ['tallervirtual.jpg'],
             category: 'Clases Virtuales',
-            description: 'Aprende la técnica del Chañuntuku, tejido anudado de la tradición mapuche. En esta clase virtual aprenderás los fundamentos de esta técnica ancestral, materiales necesarios, montaje y terminaciones. Incluye material de apoyo digital y acceso a grabación.',
+            description: 'Aprende la técnica del Chañuntuku, tejido de chiñai (fleco o mecha) de la tradición mapuche. En esta clase virtual aprenderás los fundamentos de esta técnica ancestral, materiales necesarios, montaje y terminaciones. Incluye material de apoyo digital y acceso a grabación.',
             details: {
                 'Modalidad': 'Virtual (grabada)',
                 'Duración': '2-3 horas',
                 'Nivel': 'Principiante',
-                'Incluye': 'Material digital'
+                'Incluye': 'Material digital, clases paso a paso, bibliografia y acompañamiento personalizado'
             }
         }
     ]

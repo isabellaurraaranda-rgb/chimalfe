@@ -211,9 +211,9 @@ const PRODUCTS = {
             id: 13,
             name: 'Clase Virtual Makuñ',
             shortDesc: 'Aprende el tejido de manta mapuche',
-            price: 120000,
-            image: 'virtualmakun.jpg',
-            images: ['virtualmakun.jpg'],
+            price: 100000,
+            image: 'clasevirtualponcho.jpg',
+            images: ['clasevirtualponcho.jpg'],
             category: 'Clases Virtuales',
             description: 'Te invito a aprender el proceso completo de creación de un makuñ, desde la urdimbre hasta el tejido final. Son 4 clases de 2 horas cada una, pensadas para quienes quieren profundizar en el textil mapuche, respetando sus tiempos, técnicas y sentido.',
             details: {
